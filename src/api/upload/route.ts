@@ -7,25 +7,45 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export async function POST(req: Request) {
-    const formData = await req.formData();
-    const file = formData.get('file') as File;
-
-    if (!file) {
-        return NextResponse.json({ error: 'No file' }, { status: 400 });
-    }
-
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    const result = await new Promise((resolve, reject) => {
+function uploadBuffer(buffer: Buffer, filename: string) {
+    return new Promise<any>((resolve, reject) => {
         cloudinary.uploader
-            .upload_stream({ folder: 'wedding-gallery' }, (error, result) => {
-                if (error) reject(error);
-                else resolve(result);
-            })
+            .upload_stream(
+                {
+                    folder: 'wedding-gallery',
+                    public_id: filename.replace(/\.[^/.]+$/, ''), // strip extension
+                    overwrite: false,
+                    resource_type: 'image',
+                },
+                (error, result) => {
+                    if (error) reject(error);
+                    else resolve(result);
+                },
+            )
             .end(buffer);
     });
+}
 
-    return NextResponse.json(result);
+export async function POST(req: Request) {
+    const formData = await req.formData();
+    const files = formData.getAll('files') as File[];
+
+    if (!files || files.length === 0) {
+        return NextResponse.json({ error: 'No files' }, { status: 400 });
+    }
+
+    const uploads = await Promise.all(
+        files.map(async (file) => {
+            const bytes = await file.arrayBuffer();
+            const buffer = Buffer.from(bytes);
+            const result = await uploadBuffer(buffer, file.name);
+            return {
+                name: file.name,
+                url: result.secure_url,
+                public_id: result.public_id,
+            };
+        }),
+    );
+
+    return NextResponse.json({ uploaded: uploads });
 }
