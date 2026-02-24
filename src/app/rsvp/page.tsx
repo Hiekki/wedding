@@ -17,12 +17,12 @@ export default function RSVPPage() {
                 className='object-cover scale-95 lg:scale-100 -z-10 pointer-events-none select-none'
             />
 
-            <main className='relative z-10 min-h-dvh px-6 py-16 mt-20 lg:mt-30'>
+            <main className='relative z-10 min-h-dvh px-6 py-16 mt-30'>
                 <div className='max-w-2xl mx-auto'>
                     <h1 className='text-5xl font-serif text-center tracking-widest'>RSVP</h1>
                     <p className='text-center text-neutral-600 mt-4'>Please respond at your earliest convenience.</p>
 
-                    <div className='mt-10 pb-32 lg:pb-0'>
+                    <div className='mt-10'>
                         <RSVPForm />
                     </div>
                 </div>
