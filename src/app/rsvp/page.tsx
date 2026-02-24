@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function RSVPPage() {
     return (
-        <section className='relative min-h-screen w-full'>
+        <section className='relative isolate min-h-screen w-full'>
             <Image src='/images/border.png' alt='sage-borders' fill priority className='object-cover scale-95 lg:scale-100' />
 
             <main className='h-screen px-6 py-16 mt-20 lg:mt-30'>
