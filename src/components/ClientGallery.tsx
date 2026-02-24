@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Masonry from 'react-masonry-css';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 type LockDir = 'vertical' | 'horizontal' | null;
 type Dir = -1 | 1;
 
@@ -173,15 +175,15 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
                             <>
                                 <button
                                     onClick={prev}
-                                    className='absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-cream/90 text-sage px-4 py-3 border border-sage/30'
+                                    className='absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-cream/90 text-sage shadow-md hover:scale-105 transition'
                                 >
-                                    ‹
+                                    <ChevronLeft size={30} strokeWidth={2.5} />
                                 </button>
                                 <button
                                     onClick={next}
-                                    className='absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-cream/90 text-sage px-4 py-3 border border-sage/30'
+                                    className='absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-cream/90 text-sage shadow-md hover:scale-105 transition'
                                 >
-                                    ›
+                                    <ChevronRight size={30} strokeWidth={2.5} />
                                 </button>
                             </>
                         )}
