@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Home, Mail, BookImage, Plane, Gift, MessageCircleQuestionMark } from 'lucide-react';
+import { Home, Mail, BookImage, Plane, Gift, MessageCircleQuestionMark, CalendarCheck2 } from 'lucide-react';
 
 export default function MobileNavbar() {
     return (
@@ -13,6 +13,10 @@ export default function MobileNavbar() {
 
                     <Link href='/rsvp' className='flex flex-col items-center gap-1 text-xs'>
                         <Mail size={30} />
+                    </Link>
+
+                    <Link href='/schedule' className='flex flex-col items-center gap-1 text-xs'>
+                        <CalendarCheck2 size={30} />
                     </Link>
 
                     <Link href='/photos' className='flex flex-col items-center gap-1 text-xs'>

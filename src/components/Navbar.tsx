@@ -14,6 +14,9 @@ export default function Navbar() {
                             <Link className='ml-8' href='/rsvp'>
                                 RSVP
                             </Link>
+                            <Link className='ml-8' href='/schedule'>
+                                Schedule
+                            </Link>
                             <Link className='ml-8' href='/photos'>
                                 Photos
                             </Link>

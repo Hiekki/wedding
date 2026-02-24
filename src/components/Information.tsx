@@ -7,7 +7,7 @@ export default function Information() {
     const [time, setTime] = useState(0);
 
     useEffect(() => {
-        const target = new Date('2026-09-12T15:00:00').getTime();
+        const target = new Date('2026-09-12T16:00:00').getTime();
         const timer = setInterval(() => {
             setTime(target - new Date().getTime());
         }, 1000);
@@ -21,7 +21,7 @@ export default function Information() {
 
     return (
         <section className='relative h-screen w-full overflow-hidden'>
-            <Image src='/images/border.png' alt='sage-borders' fill priority className='object-cover' />
+            <Image src='/images/border.png' alt='sage-borders' fill priority className='object-cover scale-95 lg:scale-100' />
 
             <div className='relative z-10 flex h-full items-center justify-center text-center px-6'>
                 <div className='max-w-2xl lg:max-w-4xl text-sage'>

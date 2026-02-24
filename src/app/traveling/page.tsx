@@ -47,9 +47,7 @@ const hotels = [
 export default function Traveling() {
     return (
         <section className='relative isolate min-h-screen w-full'>
-            <div className='absolute inset-0 z-0'>
-                <Image src='/images/border.png' alt='sage borders' fill priority className='object-cover scale-95 lg:scale-100' />
-            </div>
+            <Image src='/images/border.png' alt='sage-borders' fill priority className='object-cover scale-95 lg:scale-100' />
 
             <div className='relative z-10 flex flex-col items-center px-6 py-24 text-center'>
                 <div className='w-full max-w-2xl lg:max-w-4xl text-sage mt-14'>
