@@ -11,12 +11,12 @@ export default function RSVPPage() {
         <section className='relative isolate min-h-screen w-full'>
             <Image src='/images/border.png' alt='sage-borders' fill priority className='object-cover scale-95 lg:scale-100' />
 
-            <main className='h-screen px-6 py-16 mt-20 lg:mt-30'>
+            <main className='min-h-dvh px-6 py-16 mt-20 lg:mt-30'>
                 <div className='max-w-2xl mx-auto'>
                     <h1 className='text-5xl font-serif text-center tracking-widest'>RSVP</h1>
                     <p className='text-center text-neutral-600 mt-4'>Please respond at your earliest convenience.</p>
 
-                    <div className='mt-10 mb-24 lg:mb-0'>
+                    <div className='mt-10 pb-32 lg:pb-0'>
                         <RSVPForm />
                     </div>
                 </div>
