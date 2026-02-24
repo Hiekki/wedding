@@ -16,7 +16,7 @@ export default function RSVPPage() {
                     <h1 className='text-5xl font-serif text-center tracking-widest'>RSVP</h1>
                     <p className='text-center text-neutral-600 mt-4'>Please respond at your earliest convenience.</p>
 
-                    <div className='mt-10 mb-12 lg:mb-0'>
+                    <div className='mt-10 mb-32 lg:mb-0'>
                         <RSVPForm />
                     </div>
                 </div>
