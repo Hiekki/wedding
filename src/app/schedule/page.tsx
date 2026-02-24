@@ -1,4 +1,9 @@
 import Image from 'next/image';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Haley and Kevin | Schedule',
+};
 
 export default function Schedule() {
     return (

@@ -1,5 +1,10 @@
 import Image from 'next/image';
 import RSVPForm from './RSVPForm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Haley and Kevin | RSVP',
+};
 
 export default function RSVPPage() {
     return (
