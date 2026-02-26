@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { Metadata } from 'next';
+import BorderFrame from '@/components/BorderFrame';
 
 export const metadata: Metadata = {
     title: 'Haley and Kevin | Schedule',
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function Schedule() {
     return (
         <section className='relative h-screen w-full overflow-hidden'>
-            <Image src='/images/border.png' alt='sage-borders' fill priority className='object-cover scale-95 lg:scale-100' />
+            <BorderFrame />
 
             <div className='flex flex-col min-h-screen items-center justify-center font-alex text-6xl lg:text-8xl'>
                 Schedule

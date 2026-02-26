@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
@@ -7,6 +6,7 @@ export const metadata: Metadata = {
 };
 
 import { BookOpen, MapPin, Hotel } from 'lucide-react';
+import BorderFrame from '@/components/BorderFrame';
 
 const hotels = [
     {
@@ -52,7 +52,7 @@ const hotels = [
 export default function Traveling() {
     return (
         <section className='relative isolate min-h-screen w-full'>
-            <Image src='/images/border.png' alt='sage-borders' fill priority className='object-cover scale-95 lg:scale-100' />
+            <BorderFrame />
 
             <div className='relative z-10 flex flex-col items-center px-6 py-24 text-center'>
                 <div className='w-full max-w-2xl lg:max-w-4xl text-sage mt-14'>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import BorderFrame from './BorderFrame';
 
 export default function Information() {
     const [time, setTime] = useState(0);
@@ -21,7 +21,7 @@ export default function Information() {
 
     return (
         <section className='relative h-screen w-full overflow-hidden'>
-            <Image src='/images/border.png' alt='sage-borders' fill priority className='object-cover scale-95 lg:scale-100' />
+            <BorderFrame mode='absolute' />
 
             <div className='relative z-10 flex h-full items-center justify-center text-center px-6'>
                 <div className='max-w-2xl lg:max-w-4xl text-sage'>
@@ -31,12 +31,12 @@ export default function Information() {
                         <span className=''>Kevin Abernathy</span>
                     </h1>
                     <p className='mt-12 text-xl lg:text-3xl opacity-90 font-open'>September 12, 2026</p>
-                    <p className='flex flex-col mt-8 text-xl lg:text-2xl opacity-90 font-open tracking-wider'>
+                    <p className='flex flex-col pt-8 text-xl lg:text-2xl opacity-90 font-open tracking-wider'>
                         <span>The Side Porch</span>
                         <span>203 Roy Martin Road</span>
                         <span>Gray, TN 37615</span>
                     </p>
-                    <p className='mt-24 text-lg lg:text-2xl opacity-90 font-open tracking-widest'>
+                    <p className='pt-24 text-lg lg:text-2xl opacity-90 font-open tracking-widest'>
                         {days} days
                         <span className='ml-8'>{hours} hours</span>
                         <span className='ml-8'>{minutes} minutes</span>

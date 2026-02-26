@@ -12,7 +12,9 @@ type Dir = -1 | 1;
 const PAGE_SIZE = 16;
 
 const breakpointColumnsObj = {
-    default: 4,
+    default: 5,
+    1400: 4,
+    1200: 3,
     1024: 2,
 };
 
@@ -124,7 +126,7 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
     }
 
     return (
-        <section className='mx-auto max-w-6xl px-4 py-10'>
+        <section className='mx-auto max-w-500 px-4 py-10'>
             <Masonry breakpointCols={breakpointColumnsObj} className='flex -ml-4' columnClassName='pl-4'>
                 {visiblePhotos.map((src, i) => (
                     <button
