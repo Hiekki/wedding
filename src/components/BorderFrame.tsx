@@ -19,7 +19,7 @@ export default function BorderFrame({ mode = 'fixed' }: BorderFrameProps) {
                 priority
                 width={2400}
                 height={400}
-                className={mode == 'absolute' ? '-translate-y-[30%]' : '' + ' absolute top-10 left-1/2 -translate-x-1/2 w-600 h-auto'}
+                className='absolute top-10 left-1/2 -translate-x-1/2 w-600 h-auto -translate-y-[30%]'
             />
 
             <Image
@@ -28,7 +28,7 @@ export default function BorderFrame({ mode = 'fixed' }: BorderFrameProps) {
                 aria-hidden
                 width={2400}
                 height={400}
-                className='absolute bottom-0 left-1/2 -translate-x-1/2 w-600 h-auto translate-y-[15%] lg:translate-y-[30%]'
+                className='absolute bottom-0 left-1/2 -translate-x-1/2 w-600 h-auto translate-y-[20%] lg:translate-y-[50%]'
             />
 
             <Image

@@ -55,7 +55,7 @@ export default function Traveling() {
             <BorderFrame />
 
             <div className='relative z-10 flex flex-col items-center px-6 py-24 text-center'>
-                <div className='w-full max-w-2xl lg:max-w-4xl text-sage mt-14'>
+                <div className='w-full max-w-2xl lg:max-w-4xl text-sage pt-4 lg:pt-14'>
                     {hotels.map((hotel) => (
                         <div key={hotel.name} className='mt-12'>
                             <h1 className='text-4xl lg:text-5xl font-alex'>{hotel.name}</h1>

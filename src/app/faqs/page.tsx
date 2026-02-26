@@ -61,7 +61,7 @@ export default function FAQsPage() {
                 <div className='min-h-[40vh] flex flex-col items-center justify-end text-center pt-32'>
                     <h1 className='text-4xl md:text-5xl font-serif text-sage mb-4'>Frequently Asked Questions</h1>
 
-                    <p className='text-sage/70 text-lg tracking-wide'>Everything you need to know for our special day</p>
+                    <p className='text-sage/70 text-md lg:text-lg tracking-wide'>Everything you need to know for our special day</p>
 
                     <div className='w-24 h-0.5 bg-sage/40 mt-6' />
                 </div>
