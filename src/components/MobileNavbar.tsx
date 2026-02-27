@@ -8,7 +8,7 @@ const items = [
     { href: '/', icon: Home, label: 'Home' },
     { href: '/rsvp', icon: Mail, label: 'RSVP' },
     { href: '/schedule', icon: CalendarCheck2, label: 'Schedule' },
-    { href: '/photos', icon: BookImage, label: 'Photos' },
+    { href: '/gallery', icon: BookImage, label: 'Gallery' },
     { href: '/traveling', icon: Plane, label: 'Travel' },
     { href: '/registry', icon: Gift, label: 'Registry' },
     { href: '/faqs', icon: MessageCircleQuestionMark, label: 'FAQs' },
