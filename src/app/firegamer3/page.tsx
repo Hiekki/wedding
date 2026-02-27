@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import BorderFrame from '@/components/BorderFrame';
 
 export const metadata: Metadata = {
     title: 'Haley and Kevin | FireGamer3',
+    description: 'he almost like a true gamer tho',
 };
 
 export default function FAQsPage() {
