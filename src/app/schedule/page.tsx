@@ -35,7 +35,7 @@ export default function Schedule() {
                     <p className='text-sage/70 text-md lg:text-lg tracking-wide'>Times will be updated as we get closer to the big day.</p>
                     <div className='w-24 h-0.5 bg-sage/40 mt-6 mx-auto' />
                 </div>
-                <div className='mt-12 space-y-6'>
+                <div className='mt-12 space-y-6 pb-12 lg:pb-0'>
                     {scheduleItems.map((item) => (
                         <div
                             key={item.title}
