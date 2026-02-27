@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Hero() {
     return (
-        <section className='relative h-screen w-full overflow-hidden'>
+        <section className='relative h-screen w-full overflow-hidden -mt-24 lg:-mt-36'>
             <Image src='/images/hero.jpg' alt='Haley and Kevin' fill priority className='object-cover' />
 
             <div className='absolute inset-0 bg-black/30' />

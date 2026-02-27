@@ -36,11 +36,15 @@ export default function Information() {
                         <span>203 Roy Martin Road</span>
                         <span>Gray, TN 37615</span>
                     </p>
-                    <p className='pt-24 text-lg lg:text-2xl opacity-90 font-open tracking-widest'>
-                        {days} days
-                        <span className='ml-8'>{hours} hours</span>
-                        <span className='ml-8'>{minutes} minutes</span>
-                        <span className='ml-8'>{seconds} seconds</span>
+                    <p className='flex flex-col lg:flex-row items-center justify-center pt-24 text-lg lg:text-2xl opacity-90 font-open tracking-widest'>
+                        <span>
+                            <span>{days} days</span>
+                            <span className='ml-8'>{hours} hours</span>
+                        </span>
+                        <span>
+                            <span className='ml-8'>{minutes} minutes</span>
+                            <span className='ml-8'>{seconds} seconds</span>
+                        </span>
                     </p>
                 </div>
             </div>

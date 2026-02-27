@@ -11,7 +11,8 @@ export default function Photos() {
         <section className='relative isolate w-full'>
             <BorderFrame />
 
-            <div className='relative z-10 w-full px-6 pt-24 lg:pt-36'>
+            <div className='relative z-10 w-full px-6 py-16 lg:py-20 text-sage'>
+                <h1 className='text-center text-5xl font-alex mb-4'>Our Gallery</h1>
                 <Gallery />
             </div>
         </section>

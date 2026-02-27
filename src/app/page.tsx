@@ -3,7 +3,7 @@ import Information from '@/components/Information';
 
 export default function Home() {
     return (
-        <div>
+        <div className='-pt-24 lg:-pt-36'>
             <Hero />
             <Information />
         </div>

@@ -46,7 +46,7 @@ export default function RootLayout({
             <body className={`${alexBrush.variable} ${openSans.variable} antialiased`}>
                 <Navbar />
                 <MobileNavbar />
-                <main className='bg-cream text-sage pb-24 md:pb-0'>{children}</main>
+                <main className='bg-cream text-sage pt-24 lg:pt-36'>{children}</main>
             </body>
         </html>
     );

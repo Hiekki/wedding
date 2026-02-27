@@ -51,36 +51,40 @@ const hotels = [
 
 export default function Traveling() {
     return (
-        <section className='relative isolate min-h-screen w-full'>
+        <section className='relative isolate w-full overflow-hidden'>
             <BorderFrame />
 
-            <div className='relative z-10 flex flex-col items-center px-6 py-24 text-center'>
-                <div className='w-full max-w-2xl lg:max-w-4xl text-sage pt-4 lg:pt-14'>
+            <h1 className='text-center text-5xl font-alex pt-16 lg:pt-20 lg:-mb-20'>Traveling</h1>
+            <div className='relative z-10 px-6 py-20 lg:py-0 flex flex-col items-center justify-start lg:justify-center min-h-[calc(90vh-6rem)] lg:min-h-[calc(90vh-9rem)]'>
+                <div className='max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 text-center text-sage'>
                     {hotels.map((hotel) => (
-                        <div key={hotel.name} className='mt-12'>
+                        <div key={hotel.name} className='w-full max-w-2xl mx-auto'>
                             <h1 className='text-4xl lg:text-5xl font-alex'>{hotel.name}</h1>
 
-                            <p className='mt-1 text-lg font-open'>{hotel.city}</p>
+                            <p className='mt-2 text-lg font-open'>{hotel.city}</p>
 
-                            <p className='mt-1 text-lg lg:text-xl font-open opacity-90'>
+                            <p className='mt-2 text-lg lg:text-xl font-open opacity-90'>
                                 {hotel.address}
                                 <br />
                                 {hotel.city}, {hotel.state} {hotel.zip}
                             </p>
-                            <div className='mt-2'>
+
+                            <div className='mt-6 flex justify-center gap-4 flex-wrap'>
                                 <Link
                                     href={hotel.booking}
                                     target='_blank'
                                     rel='noopener noreferrer'
-                                    className='inline-flex items-center gap-2 bg-sage text-cream hover:bg-rose hover:text-cream border-sage border-2 p-1 px-6 rounded-lg transition'
+                                    className='inline-flex items-center gap-2 bg-sage text-cream hover:bg-rose border-2 border-sage px-6 py-2 rounded-lg transition'
                                 >
-                                    <BookOpen size={15} /> Book
+                                    <BookOpen size={15} />
+                                    Book
                                 </Link>
+
                                 <Link
                                     href={hotel.directions}
                                     target='_blank'
                                     rel='noopener noreferrer'
-                                    className='ml-4 inline-flex items-center gap-2 bg-cream text-sage hover:text-cream hover:bg-rose border-2 border-sage p-1 px-6 rounded-lg transition'
+                                    className='inline-flex items-center gap-2 bg-cream text-sage hover:bg-rose hover:text-cream border-2 border-sage px-6 py-2 rounded-lg transition'
                                 >
                                     <MapPin size={15} />
                                     Directions
@@ -89,12 +93,13 @@ export default function Traveling() {
                         </div>
                     ))}
                 </div>
-                <div className='mt-18'>
+
+                <div className='mt-12 flex items-center justify-center px-6 text-center pb-12 lg:pb-0'>
                     <Link
                         href='https://www.google.com/maps/search/gray+tn+hotels/@36.4066988,-82.5485025,79331m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='inline-flex items-center gap-2 bg-sage text-cream hover:bg-rose hover:text-cream border-sage border-2 p-1 px-6 rounded-lg transition'
+                        className='inline-flex items-center gap-2 bg-sage text-cream hover:bg-rose hover:text-cream border-sage border-2 px-6 py-2 rounded-lg transition'
                     >
                         <Hotel size={15} /> View More Hotels
                     </Link>

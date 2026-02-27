@@ -1,5 +1,10 @@
 import Accordion from '@/components/ui/Accordion';
+import { Metadata } from 'next';
 import BorderFrame from '@/components/BorderFrame';
+
+export const metadata: Metadata = {
+    title: 'Haley and Kevin | FAQs',
+};
 
 export default function FAQsPage() {
     const faqItems = [
@@ -54,19 +59,19 @@ export default function FAQsPage() {
     ];
 
     return (
-        <main className='relative min-h-screen px-6 overflow-hidden'>
+        <main className='relative min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-9rem)] px-6 overflow-hidden'>
             <BorderFrame />
 
             <div className='relative z-10 w-full max-w-3xl mx-auto'>
-                <div className='min-h-[40vh] flex flex-col items-center justify-end text-center pt-32'>
-                    <h1 className='text-4xl md:text-5xl font-serif text-sage mb-4'>Frequently Asked Questions</h1>
+                <div className='flex flex-col items-center justify-end text-center pt-20'>
+                    <h1 className='text-4xl lg:text-5xl font-alex text-sage mb-4'>Frequently Asked Questions</h1>
 
                     <p className='text-sage/70 text-md lg:text-lg tracking-wide'>Everything you need to know for our special day</p>
 
                     <div className='w-24 h-0.5 bg-sage/40 mt-6' />
                 </div>
 
-                <div className='pt-12 pb-24'>
+                <div className='pt-6 pb-24'>
                     <Accordion items={faqItems} singleOpen />
                 </div>
             </div>

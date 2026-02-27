@@ -1,38 +1,44 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const links = [
+    { href: '/', label: 'Home' },
+    { href: '/rsvp', label: 'RSVP' },
+    { href: '/schedule', label: 'Schedule' },
+    { href: '/photos', label: 'Photos' },
+    { href: '/traveling', label: 'Traveling' },
+    { href: '/registry', label: 'Gift Registry' },
+    { href: '/faqs', label: 'FAQs' },
+];
 
 export default function Navbar() {
+    const pathname = usePathname();
+
     return (
-        <div className='w-full'>
-            <div className='flex items-center justify-center w-screen'>
-                <nav className='flex fixed top-0 z-50 w-full h-24 lg:h-36 bg-cream'>
-                    <div className='text-sage flex flex-col py-4 items-center justify-between w-full px-12'>
-                        <div className='flex font-alex text-3xl lg:text-5xl pt-6'>Haley & Kevin</div>
-                        <div className='hidden lg:flex pl-8 text-xl'>
-                            <Link className='' href='/'>
-                                Home
+        <nav className='fixed top-0 z-50 w-full h-24 lg:h-36 bg-cream/95 backdrop-blur border-b border-sage/15 shadow-sm'>
+            <div className='h-full max-w-6xl mx-auto px-6 lg:px-12 flex flex-col items-center justify-center text-sage'>
+                <div className='font-alex text-3xl lg:text-5xl leading-none'>Haley &amp; Kevin</div>
+
+                <div className='hidden lg:flex mt-6 gap-x-10 text-xl'>
+                    {links.map((l) => {
+                        const active = pathname === l.href;
+                        return (
+                            <Link
+                                key={l.href}
+                                href={l.href}
+                                className={[
+                                    'transition hover:text-rose',
+                                    active ? 'text-rose underline underline-offset-8' : 'text-sage',
+                                ].join(' ')}
+                            >
+                                {l.label}
                             </Link>
-                            <Link className='pl-8' href='/rsvp'>
-                                RSVP
-                            </Link>
-                            <Link className='pl-8' href='/schedule'>
-                                Schedule
-                            </Link>
-                            <Link className='pl-8' href='/photos'>
-                                Photos
-                            </Link>
-                            <Link className='pl-8' href='/traveling'>
-                                Traveling
-                            </Link>
-                            <Link className='pl-8' href='/registry'>
-                                Gift Registry
-                            </Link>
-                            <Link className='pl-8' href='/faqs'>
-                                FAQs
-                            </Link>
-                        </div>
-                    </div>
-                </nav>
+                        );
+                    })}
+                </div>
             </div>
-        </div>
+        </nav>
     );
 }

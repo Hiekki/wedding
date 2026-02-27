@@ -38,7 +38,7 @@ export default function Accordion({ items, singleOpen = true }: AccordionProps) 
                             onClick={() => toggle(index)}
                             className='w-full flex justify-between items-center px-5 lg:px-8 py-5 lg:py-6 text-left'
                         >
-                            <span className='text-sage tracking-[0.06em] text-xl lg:text-3xl font-serif'>{item.title}</span>
+                            <span className='text-sage tracking-[0.06em] text-xl font-serif'>{item.title}</span>
 
                             <ChevronDown
                                 className={`transition-transform duration-300 text-sage shrink-0 ${isOpen ? 'rotate-180' : ''}`}
@@ -52,9 +52,7 @@ export default function Accordion({ items, singleOpen = true }: AccordionProps) 
                             }`}
                         >
                             <div className='overflow-hidden'>
-                                <div className='px-5 lg:px-8 pb-6 lg:pb-8 text-sage/80 leading-relaxed text-lg lg:text-xl'>
-                                    {item.content}
-                                </div>
+                                <div className='px-5 lg:px-8 pb-6 lg:pb-8 text-sage/80 leading-relaxed text-lg'>{item.content}</div>
                             </div>
                         </div>
                     </div>
