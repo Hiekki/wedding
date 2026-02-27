@@ -1,7 +1,13 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import BorderFrame from '@/components/BorderFrame';
+
+export const metadata: Metadata = {
+    title: 'Haley and Kevin | Gift Registry',
+};
+
 import { Copy, ExternalLink, Gift, HeartHandshake } from 'lucide-react';
 
 const CASH_TAG = '$hiekki';
