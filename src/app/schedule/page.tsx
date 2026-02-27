@@ -41,21 +41,20 @@ export default function Schedule() {
                             key={item.title}
                             className='rounded-2xl border border-sage/15 bg-cream/60 backdrop-blur-sm px-6 py-5 shadow-sm'
                         >
-                            <div className='flex items-start justify-between gap-6'>
-                                <div>
+                            <div className='flex flex-col gap-3 w-full'>
+                                <div className='flex items-start justify-between w-full'>
                                     <h2 className='text-2xl font-open'>{item.title}</h2>
-                                    <p className='mt-2 text-sage/80 font-open'>{item.description}</p>
-                                </div>
-                                <div className='shrink-0'>
-                                    <span className='inline-flex items-center rounded-full border border-rose/25 bg-rose/10 px-4 py-1 text-sm font-open text-rose'>
+
+                                    <span className='inline-flex items-center rounded-full border border-rose/25 bg-rose/10 px-4 py-1 text-sm font-open text-rose shrink-0'>
                                         {item.time}
                                     </span>
                                 </div>
+
+                                <p className='text-sage/80 font-open'>{item.description}</p>
                             </div>
                         </div>
                     ))}
                 </div>
-                <p className='mt-10 text-center text-sage/60 font-open text-sm'>Tip: Check back later for final times and any updates.</p>
             </div>
         </section>
     );
