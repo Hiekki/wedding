@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import BorderFrame from './BorderFrame';
 
 export default function Information() {
     const [time, setTime] = useState(0);
@@ -21,10 +20,16 @@ export default function Information() {
 
     return (
         <section className='relative h-screen w-full overflow-hidden'>
-            <BorderFrame mode='absolute' />
+            <div
+                className='fixed inset-0 z-0 bg-cover bg-center bg-no-repeat'
+                style={{
+                    backgroundImage: "url('/images/floral.png')",
+                }}
+                aria-hidden='true'
+            />
 
             <div className='relative z-10 flex h-full items-center justify-center text-center px-6'>
-                <div className='max-w-2xl lg:max-w-4xl text-sage'>
+                <div className='max-w-2xl rounded-3xl bg-cream/70 px-8 py-10 text-sage shadow-lg backdrop-blur-sm lg:max-w-5xl lg:px-14 lg:py-12'>
                     <h1 className='flex flex-col items-center text-5xl lg:text-9xl font-alex'>
                         <span className=''>Haley McPherson</span>
                         <span className='text-3xl lg:text-6xl font-bold'>&</span>

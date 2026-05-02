@@ -6,7 +6,6 @@ export const metadata: Metadata = {
 };
 
 import { BookOpen, MapPin, Hotel } from 'lucide-react';
-import BorderFrame from '@/components/BorderFrame';
 
 const hotels = [
     {
@@ -51,58 +50,68 @@ const hotels = [
 
 export default function Traveling() {
     return (
-        <section className='relative isolate w-full overflow-hidden'>
-            <BorderFrame />
+        <section className='relative isolate w-full overflow-hidden bg-cream'>
+            <div
+                className='fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat'
+                style={{
+                    backgroundImage: "url('/images/floral.png')",
+                }}
+                aria-hidden='true'
+            />
 
-            <h1 className='text-center text-5xl font-alex pt-16 lg:pt-20 lg:-mb-20'>Traveling</h1>
-            <div className='relative z-10 px-6 py-20 lg:py-0 flex flex-col items-center justify-start lg:justify-center min-h-[calc(90vh-6rem)] lg:min-h-[calc(90vh-9rem)]'>
-                <div className='max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 text-center text-sage'>
-                    {hotels.map((hotel) => (
-                        <div key={hotel.name} className='w-full max-w-2xl mx-auto'>
-                            <h1 className='text-4xl lg:text-5xl font-alex'>{hotel.name}</h1>
+            <div className='relative z-10 px-6 py-20 lg:py-24'>
+                <div className='mx-auto max-w-6xl rounded-3xl bg-cream/70 px-8 py-10 text-sage shadow-lg backdrop-blur-sm lg:px-14 lg:py-12'>
+                    <h1 className='text-center text-5xl font-alex lg:text-6xl'>Traveling</h1>
 
-                            <p className='mt-2 text-lg font-open'>{hotel.city}</p>
+                    <div className='mt-16 grid w-full grid-cols-1 gap-16 text-center lg:grid-cols-2'>
+                        {hotels.map((hotel) => (
+                            <div key={hotel.name} className='w-full max-w-2xl mx-auto'>
+                                <h2 className='text-4xl font-alex lg:text-5xl'>{hotel.name}</h2>
 
-                            <p className='mt-2 text-lg lg:text-xl font-open opacity-90'>
-                                {hotel.address}
-                                <br />
-                                {hotel.city}, {hotel.state} {hotel.zip}
-                            </p>
+                                <p className='mt-2 text-lg font-open'>{hotel.city}</p>
 
-                            <div className='mt-6 flex justify-center gap-4 flex-wrap'>
-                                <Link
-                                    href={hotel.booking}
-                                    target='_blank'
-                                    rel='noopener noreferrer'
-                                    className='inline-flex items-center gap-2 bg-sage text-cream hover:bg-rose border-2 border-sage px-6 py-2 rounded-lg transition'
-                                >
-                                    <BookOpen size={15} />
-                                    Book
-                                </Link>
+                                <p className='mt-2 text-lg font-open opacity-90 lg:text-xl'>
+                                    {hotel.address}
+                                    <br />
+                                    {hotel.city}, {hotel.state} {hotel.zip}
+                                </p>
 
-                                <Link
-                                    href={hotel.directions}
-                                    target='_blank'
-                                    rel='noopener noreferrer'
-                                    className='inline-flex items-center gap-2 bg-cream text-sage hover:bg-rose hover:text-cream border-2 border-sage px-6 py-2 rounded-lg transition'
-                                >
-                                    <MapPin size={15} />
-                                    Directions
-                                </Link>
+                                <div className='mt-6 flex flex-wrap justify-center gap-4'>
+                                    <Link
+                                        href={hotel.booking}
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                        className='inline-flex items-center gap-2 rounded-lg border-2 border-sage bg-sage px-6 py-2 text-cream transition hover:bg-rose'
+                                    >
+                                        <BookOpen size={15} />
+                                        Book
+                                    </Link>
+
+                                    <Link
+                                        href={hotel.directions}
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                        className='inline-flex items-center gap-2 rounded-lg border-2 border-sage bg-cream px-6 py-2 text-sage transition hover:bg-rose hover:text-cream'
+                                    >
+                                        <MapPin size={15} />
+                                        Directions
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
 
-                <div className='mt-12 flex items-center justify-center px-6 text-center pb-12 lg:pb-0'>
-                    <Link
-                        href='https://www.google.com/maps/search/gray+tn+hotels/@36.4066988,-82.5485025,79331m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='inline-flex items-center gap-2 bg-sage text-cream hover:bg-rose hover:text-cream border-sage border-2 px-6 py-2 rounded-lg transition'
-                    >
-                        <Hotel size={15} /> View More Hotels
-                    </Link>
+                    <div className='mt-12 flex items-center justify-center text-center'>
+                        <Link
+                            href='https://www.google.com/maps/search/gray+tn+hotels/@36.4066988,-82.5485025,79331m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='inline-flex items-center gap-2 rounded-lg border-2 border-sage bg-sage px-6 py-2 text-cream transition hover:bg-rose hover:text-cream'
+                        >
+                            <Hotel size={15} />
+                            View More Hotels
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>

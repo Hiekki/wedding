@@ -1,6 +1,5 @@
 import Accordion from '@/components/ui/Accordion';
 import { Metadata } from 'next';
-import BorderFrame from '@/components/BorderFrame';
 
 export const metadata: Metadata = {
     title: 'Haley and Kevin | FAQs',
@@ -60,19 +59,27 @@ export default function FAQsPage() {
 
     return (
         <main className='relative min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-9rem)] px-6 overflow-hidden'>
-            <BorderFrame />
+            <div
+                className='fixed inset-0 z-0 bg-cover bg-center bg-no-repeat'
+                style={{
+                    backgroundImage: "url('/images/floral.png')",
+                }}
+                aria-hidden='true'
+            />
 
-            <div className='relative z-10 w-full max-w-3xl mx-auto'>
-                <div className='flex flex-col items-center justify-end text-center pt-20'>
-                    <h1 className='text-4xl lg:text-5xl font-alex text-sage mb-4'>Frequently Asked Questions</h1>
+            <div className='relative z-10 w-full max-w-3xl mx-auto pt-14'>
+                <div className='mx-auto max-w-2xl rounded-3xl bg-cream/70 px-8 py-10 text-sage shadow-lg backdrop-blur-sm lg:max-w-5xl lg:px-14 lg:py-12'>
+                    <div className='flex flex-col items-center justify-end text-center'>
+                        <h1 className='text-4xl lg:text-5xl font-alex text-sage mb-4'>Frequently Asked Questions</h1>
 
-                    <p className='text-sage/70 text-md lg:text-lg tracking-wide'>Everything you need to know for our special day</p>
+                        <p className='text-sage/70 text-md lg:text-lg tracking-wide'>Everything you need to know for our special day</p>
 
-                    <div className='w-24 h-0.5 bg-sage/40 mt-6' />
-                </div>
+                        <div className='w-24 h-0.5 bg-sage/40 mt-6' />
+                    </div>
 
-                <div className='pt-6 pb-24'>
-                    <Accordion items={faqItems} singleOpen />
+                    <div className='pt-6'>
+                        <Accordion items={faqItems} singleOpen />
+                    </div>
                 </div>
             </div>
         </main>

@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import BorderFrame from '@/components/BorderFrame';
 
 export const metadata: Metadata = {
     title: 'Haley and Kevin | Schedule',
@@ -28,32 +27,39 @@ const scheduleItems = [
 export default function Schedule() {
     return (
         <section className='relative min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-9rem)] w-full overflow-hidden'>
-            <BorderFrame />
+            <div
+                className='fixed inset-0 z-0 bg-cover bg-center bg-no-repeat'
+                style={{
+                    backgroundImage: "url('/images/floral.png')",
+                }}
+                aria-hidden='true'
+            />
+
             <div className='relative z-10 w-full max-w-4xl mx-auto px-6 py-16 lg:py-20 text-sage'>
-                <div className='text-center'>
+                <div className='max-w-2xl rounded-3xl bg-cream/70 px-8 py-10 text-sage shadow-lg backdrop-blur-sm lg:max-w-5xl lg:px-14 lg:py-12 text-center'>
                     <h1 className='text-5xl font-alex mb-4'>Our Schedule</h1>
                     <p className='text-sage/70 text-md lg:text-lg tracking-wide'>Times will be updated as we get closer to the big day.</p>
                     <div className='w-24 h-0.5 bg-sage/40 mt-6 mx-auto' />
-                </div>
-                <div className='mt-12 space-y-6 pb-12 lg:pb-0'>
-                    {scheduleItems.map((item) => (
-                        <div
-                            key={item.title}
-                            className='rounded-2xl border border-sage/15 bg-cream/60 backdrop-blur-sm px-6 py-5 shadow-sm'
-                        >
-                            <div className='flex flex-col gap-3 w-full'>
-                                <div className='flex items-start justify-between w-full'>
-                                    <h2 className='text-2xl font-open'>{item.title}</h2>
+                    <div className='mt-12 space-y-6 pb-12 lg:pb-0 text-left'>
+                        {scheduleItems.map((item) => (
+                            <div
+                                key={item.title}
+                                className='rounded-2xl border border-sage/15 bg-cream/60 backdrop-blur-sm px-6 py-5 shadow-sm'
+                            >
+                                <div className='flex flex-col gap-3 w-full'>
+                                    <div className='flex items-start justify-between w-full'>
+                                        <h2 className='text-2xl font-open'>{item.title}</h2>
 
-                                    <span className='inline-flex items-center rounded-full border border-rose/25 bg-rose/10 px-4 py-1 text-sm font-open text-rose shrink-0'>
-                                        {item.time}
-                                    </span>
+                                        <span className='inline-flex items-center rounded-full border border-rose/25 bg-rose/10 px-4 py-1 text-sm font-open text-rose shrink-0'>
+                                            {item.time}
+                                        </span>
+                                    </div>
+
+                                    <p className='text-sage/80 font-open'>{item.description}</p>
                                 </div>
-
-                                <p className='text-sage/80 font-open'>{item.description}</p>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Masonry from 'react-masonry-css';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -21,6 +22,7 @@ const breakpointColumnsObj = {
 export default function ClientGallery({ photos }: { photos: string[] }) {
     const [open, setOpen] = useState(false);
     const [index, setIndex] = useState(0);
+    const [mounted, setMounted] = useState(false);
 
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
     const sentinelRef = useRef<HTMLDivElement | null>(null);
@@ -33,6 +35,10 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
     const locked = useRef<LockDir>(null);
 
     const visiblePhotos = useMemo(() => photos.slice(0, visibleCount), [photos, visibleCount]);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         if (!sentinelRef.current) return;
@@ -49,8 +55,20 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
         );
 
         obs.observe(sentinelRef.current);
+
         return () => obs.disconnect();
     }, [photos.length]);
+
+    useEffect(() => {
+        if (!open) return;
+
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            document.body.style.overflow = originalOverflow;
+        };
+    }, [open]);
 
     const close = () => setOpen(false);
 
@@ -66,6 +84,7 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
 
     useEffect(() => {
         if (!open) return;
+
         const onKey = (e: KeyboardEvent) => {
             if (e.key === 'Escape') close();
             if (e.key === 'ArrowLeft') prev();
@@ -73,13 +92,17 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
             if (e.key === 'ArrowUp') prev();
             if (e.key === 'ArrowDown') next();
         };
+
         window.addEventListener('keydown', onKey);
+
         return () => window.removeEventListener('keydown', onKey);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open, index, photos.length]);
 
     function onTouchStart(e: React.TouchEvent) {
         const t = e.touches[0];
+
         startY.current = t.clientY;
         startX.current = t.clientX;
         locked.current = null;
@@ -87,6 +110,7 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
 
     function onTouchMove(e: React.TouchEvent) {
         if (startY.current == null || startX.current == null) return;
+
         const t = e.touches[0];
         const dy = t.clientY - startY.current;
         const dx = t.clientX - startX.current;
@@ -102,6 +126,7 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
 
     function onTouchEnd(e: React.TouchEvent) {
         if (startY.current == null || startX.current == null) return;
+
         const t = e.changedTouches[0];
         const dy = t.clientY - startY.current;
         const dx = t.clientX - startX.current;
@@ -113,13 +138,16 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
 
         if (locked.current === 'horizontal') {
             if (Math.abs(dx) < THRESHOLD) return;
+
             if (dx < 0) next();
             else prev();
+
             return;
         }
 
         if (locked.current === 'vertical') {
             if (Math.abs(dy) < THRESHOLD) return;
+
             if (dy < 0) next();
             else prev();
         }
@@ -145,7 +173,7 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
                             width={1000}
                             height={1000}
                             sizes='(max-width: 1024px) 50vw, 25vw'
-                            className='w-full h-auto rounded-2xl'
+                            className='h-auto w-full rounded-2xl'
                             priority={i < 6}
                         />
                     </button>
@@ -154,44 +182,62 @@ export default function ClientGallery({ photos }: { photos: string[] }) {
 
             {visibleCount < photos.length && <div ref={sentinelRef} className='h-10' />}
 
-            {open && (
-                <div className='fixed inset-0 z-999 bg-black/70 backdrop-blur-sm p-4 flex items-center justify-center' onMouseDown={close}>
+            {mounted &&
+                open &&
+                createPortal(
                     <div
-                        className='relative w-full max-w-5xl'
-                        onMouseDown={(e) => e.stopPropagation()}
-                        onTouchStart={onTouchStart}
-                        onTouchMove={onTouchMove}
-                        onTouchEnd={onTouchEnd}
-                        style={{ touchAction: 'none' }}
+                        className='fixed inset-0 z-9999 flex h-dvh w-dvw items-center justify-center overflow-hidden bg-black/80 p-4 backdrop-blur-sm'
+                        onClick={close}
                     >
-                        <div
-                            key={animKey}
-                            className={`transition-all duration-300 ease-out ${
-                                dir === 1 ? 'animate-[slideInRight_0.3s_ease-out]' : 'animate-[slideInLeft_0.3s_ease-out]'
-                            }`}
-                        >
-                            <Image src={photos[index]} alt='' width={2400} height={2400} className='w-full h-auto rounded-2xl' priority />
-                        </div>
+                        <div className='relative flex h-full w-full items-center justify-center'>
+                            <div
+                                key={animKey}
+                                className={`transition-all duration-300 ease-out ${
+                                    dir === 1 ? 'animate-[slideInRight_0.3s_ease-out]' : 'animate-[slideInLeft_0.3s_ease-out]'
+                                }`}
+                            >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src={photos[index]}
+                                    alt=''
+                                    className='block max-h-[90dvh] max-w-[95dvw] rounded-2xl object-contain'
+                                    onClick={(e) => e.stopPropagation()}
+                                    onTouchStart={onTouchStart}
+                                    onTouchMove={onTouchMove}
+                                    onTouchEnd={onTouchEnd}
+                                    style={{ touchAction: 'none' }}
+                                />
+                            </div>
 
-                        {photos.length > 1 && (
-                            <>
-                                <button
-                                    onClick={prev}
-                                    className='absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-cream/90 text-sage shadow-md hover:scale-105 transition'
-                                >
-                                    <ChevronLeft size={30} strokeWidth={2.5} />
-                                </button>
-                                <button
-                                    onClick={next}
-                                    className='absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-cream/90 text-sage shadow-md hover:scale-105 transition'
-                                >
-                                    <ChevronRight size={30} strokeWidth={2.5} />
-                                </button>
-                            </>
-                        )}
-                    </div>
-                </div>
-            )}
+                            {photos.length > 1 && (
+                                <>
+                                    <button
+                                        type='button'
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            prev();
+                                        }}
+                                        className='absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-sage shadow-md transition hover:scale-105'
+                                    >
+                                        <ChevronLeft size={30} strokeWidth={2.5} />
+                                    </button>
+
+                                    <button
+                                        type='button'
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            next();
+                                        }}
+                                        className='absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-sage shadow-md transition hover:scale-105'
+                                    >
+                                        <ChevronRight size={30} strokeWidth={2.5} />
+                                    </button>
+                                </>
+                            )}
+                        </div>
+                    </div>,
+                    document.body,
+                )}
         </section>
     );
 }
