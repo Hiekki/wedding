@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Alex_Brush, Open_Sans } from 'next/font/google';
+//ts-ignore
 import './globals.css';
 
 import MobileNavbar from '@/components/MobileNavbar';
