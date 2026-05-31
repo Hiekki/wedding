@@ -56,7 +56,6 @@ export default function Envelope({ doorProgress, isOpen, isDoors, open }: Props)
                     className='absolute -bottom-10 left-1/2 h-20 w-[78%] -translate-x-1/2 rounded-full bg-black blur-[42px] sm:-bottom-14 sm:h-28 sm:blur-[48px]'
                 />
 
-                {/* BACK */}
                 <motion.div
                     animate={{ opacity: isDoors ? 0 : 1 }}
                     transition={{ duration: 0.5 }}
@@ -66,7 +65,6 @@ export default function Envelope({ doorProgress, isOpen, isDoors, open }: Props)
                     <div className='absolute left-[4%] top-0 h-[32%] w-[92%] rounded-b-[50%] bg-[#5f452a]/30 blur-md' />
                 </motion.div>
 
-                {/* TOP FLAP */}
                 <motion.div
                     initial={false}
                     animate={{
@@ -85,7 +83,6 @@ export default function Envelope({ doorProgress, isOpen, isDoors, open }: Props)
                     </div>
                 </motion.div>
 
-                {/* PAPER / DOORS */}
                 <motion.div
                     data-doors={isDoors}
                     initial={false}
@@ -119,7 +116,6 @@ export default function Envelope({ doorProgress, isOpen, isDoors, open }: Props)
                     <InvitationDoors progress={isDoors ? doorProgress : 0} showScrollText={isDoors} />
                 </motion.div>
 
-                {/* LEFT FLAP */}
                 <motion.div
                     animate={{ y: isOpen ? 4 : 0, opacity: isDoors ? 0 : 1 }}
                     transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
@@ -131,7 +127,6 @@ export default function Envelope({ doorProgress, isOpen, isDoors, open }: Props)
                     />
                 </motion.div>
 
-                {/* RIGHT FLAP */}
                 <motion.div
                     animate={{ y: isOpen ? 4 : 0, opacity: isDoors ? 0 : 1 }}
                     transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
@@ -143,7 +138,6 @@ export default function Envelope({ doorProgress, isOpen, isDoors, open }: Props)
                     />
                 </motion.div>
 
-                {/* BOTTOM FLAP */}
                 <motion.div
                     animate={{ y: isOpen ? 4 : 0, opacity: isDoors ? 0 : 1 }}
                     transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
@@ -165,7 +159,6 @@ export default function Envelope({ doorProgress, isOpen, isDoors, open }: Props)
                     />
                 </motion.div>
 
-                {/* WAX SEAL */}
                 <motion.button
                     onClick={open}
                     whileHover={!isOpen ? { scale: 1.1, rotate: 3 } : undefined}
