@@ -9,13 +9,14 @@ import { BookOpen, MapPin, Hotel } from 'lucide-react';
 
 const hotels = [
     {
-        name: 'DoubleTree by Hilton',
-        address: '211 Mockingbird Lane',
+        name: 'Home2 Suites',
+        address: '190 Heart Drive',
         city: 'Johnson City',
         state: 'Tennessee',
         zip: '37615',
-        booking: 'https://www.hilton.com/en/hotels/tridtdt-doubletree-johnson-city/',
-        directions: 'https://maps.app.goo.gl/kW7uDxVnEBghoGvd7',
+        booking:
+            'https://www.hilton.com/en/book/reservation/rooms/?ctyhocn=TRIJOHT&arrivalDate=2026-07-09&departureDate=2026-07-11&room1NumAdults=2&inputModule=HOTEL_SEARCH&viewPackagesAndPromotionsRate=true&WT.mc_id=zLADA0WW1XX2OLX3DA4MS5MS6_TRIJOHT7_298227037_&adType=FL&dsclid=79350629953974272&hmGUID=d1d7affc-f8e1-48a7-b932-d96cc79c7390',
+        directions: 'https://maps.app.goo.gl/B54BM9ajY4gMJCnbA',
     },
     {
         name: 'WoodSpring Suites',

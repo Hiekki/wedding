@@ -4,13 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Copy, ExternalLink, Gift, HeartHandshake } from 'lucide-react';
 
-const CASH_TAG = '$hiekki';
+const CASH_TAG = '$haleymm9595';
 const CASH_APP_LINK = `https://cash.app/${CASH_TAG.replace('$', '')}`;
+const AMAZON_LINK = 'https://www.amazon.com/wedding/guest-view/RFKI3DEKR1XU';
 
 export default function RegistryClient() {
     const [copied, setCopied] = useState(false);
     const [comingSoonAmazon, setComingSoonAmazon] = useState(false);
-    const [comingSoonTarget, setComingSoonTarget] = useState(false);
 
     async function handleCopy() {
         try {
@@ -22,12 +22,10 @@ export default function RegistryClient() {
 
     function handleComingSoonAmazon() {
         setComingSoonAmazon(true);
-        setTimeout(() => setComingSoonAmazon(false), 1500);
-    }
-
-    function handleComingSoonTarget() {
-        setComingSoonTarget(true);
-        setTimeout(() => setComingSoonTarget(false), 1500);
+        setTimeout(() => {
+            window.open(AMAZON_LINK, '_blank');
+            setComingSoonAmazon(false);
+        }, 1500);
     }
 
     return (
@@ -59,7 +57,7 @@ export default function RegistryClient() {
                             </p>
                         </div>
 
-                        <div className='mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6'>
+                        <div className='mt-8 grid grid-cols-1 gap-6 lg:max-w-3xl mx-auto'>
                             <div className='rounded-2xl border border-sage/15 bg-cream/60 backdrop-blur-sm shadow-sm px-6 py-6 text-center'>
                                 <div className='mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-sage/10 border border-sage/15'>
                                     <Gift size={18} className='text-sage' />
@@ -73,11 +71,11 @@ export default function RegistryClient() {
                                     onClick={handleComingSoonAmazon}
                                     className='mt-5 inline-flex items-center justify-center rounded-full bg-sage px-6 py-2.5 text-cream font-open text-sm hover:bg-rose transition'
                                 >
-                                    {comingSoonAmazon ? 'Coming soon..' : 'View Amazon Registry'}
+                                    {comingSoonAmazon ? 'Thank you!' : 'View Amazon Registry'}
                                 </Link>
                             </div>
 
-                            <div className='rounded-2xl border border-sage/15 bg-cream/60 backdrop-blur-sm shadow-sm px-6 py-6 text-center'>
+                            {/* <div className='rounded-2xl border border-sage/15 bg-cream/60 backdrop-blur-sm shadow-sm px-6 py-6 text-center'>
                                 <div className='mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-sage/10 border border-sage/15'>
                                     <Gift size={18} className='text-sage' />
                                 </div>
@@ -92,7 +90,7 @@ export default function RegistryClient() {
                                 >
                                     {comingSoonTarget ? 'Coming soon..' : 'View Target Registry'}
                                 </Link>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 

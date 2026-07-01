@@ -7,21 +7,21 @@ export const metadata: Metadata = {
 const scheduleItems = [
     {
         title: 'Guest Arrival',
-        time: '10:00 AM (eastern)',
+        time: '3:00 PM (eastern)',
         description: 'Please arrive a little early to park, find your seat, and get settled.',
     },
     {
         title: 'Ceremony',
-        time: '12:00 PM (eastern)',
+        time: '4:00 PM (eastern)',
         description: 'Our ceremony will take place outdoors. Dress comfortably for the weather.',
     },
     {
         title: 'Photos',
-        time: '1:00 PM (eastern)',
+        time: '5:00 PM (eastern)',
         description: 'Family and wedding party photos will take place immediately after the ceremony.',
     },
-    { title: 'Reception', time: '3:00 PM (eastern)', description: 'Dinner, toasts, and celebration to follow.' },
-    { title: 'Send-Off', time: '5:00 PM (eastern)', description: 'We’ll wrap up the night with a final farewell.' },
+    { title: 'Reception', time: '6:00 PM (eastern)', description: 'Dinner, toasts, and celebration to follow.' },
+    { title: 'Send-Off', time: '8:00 PM (eastern)', description: 'We’ll wrap up the night with a final farewell.' },
 ];
 
 export default function Schedule() {
